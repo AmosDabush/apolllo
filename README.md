@@ -1,160 +1,69 @@
-# New Project Guidelines
+# Full-Stack Docker Project: Node, NestJS, React, Mongo, Material-UI
 
-This is a boilerplate repository for creating a new Docker project using Node, NestJS, React, Mongo, Material-UI along with quick start commands (check Makefile/ReadMe). 
+## Project Overview
+This repository demonstrates best practices in full-stack development using Docker, Node, NestJS, React, and Mongo with Material-UI. It features a multi-database architecture for efficient load distribution and encourages contributions for workflow and maintenance enhancements.
 
-Best practices have been used and implemented to my knowledge to ensure the longevity of this project. For example a multi-database architecture is being used to distribute the load to the databases. Encourage pull requests for improving the workflow and processes + maintenance updates.
+### Key Features:
+- Authentication and authorization with password hashing.
+- Form validation on the front-end.
+- Step debugging in VS Code.
 
-This project includes the bare minimum for authentication and authorization e.g: a user is able to create an account and sign-in (with password hashing, form validation on front-end).
+## Dependencies
+- **Docker**: For containerization.
+- **MongoDB**: NoSQL database.
+- **Nest.js**: Efficient, scalable server-side applications.
+- **React JS**: Front-end development.
+- **Material UI**: UI component library.
 
-Step debugging through VS Code is enabled and launch.json provided (see below).
+## Setup Instructions
 
-## Dependancies
+### Initial Configuration
+1. Clone the repository.
+2. Replace all `{PROJECT_NAME}` placeholders in files including `docker-compose.yml`, `Makefile`, and `.env` files.
+3. Ensure the project name matches the root directory name.
 
-The following dependancies have been added to improve developer workflow and build the application.
+### Environment Setup
+- Update `.env` files in both client and app directories.
 
-*  **Docker** Docker is a containerization software.
-*  **MongoDB** MongoDB database.
-*  **Nest.js** Nest (NestJS) is a framework for building efficient, scalable Node.js server-side applications.
-*  **React JS** Core front-end technology
-*  **Material UI** Component library
+### Backend Setup
+1. Navigate to the `/app` directory.
+2. Install Nest.js CLI globally: `yarn add -g @nestjs/cli`
+3. Install dependencies: `yarn`
+4. Build and start the back-end Docker containers: `make up`
+5. For a quiet mode (suppresses console output): `make up-silent`
 
-## Getting started
+### Frontend Setup
+1. Open a new terminal and go to the `/client` directory.
+2. Install dependencies: `yarn`
+3. Build and start the front-end environment: `make up`
 
-Clone the repository, **change all references to {PROJECT_NAME} in all files (do find and replace)**, also ensure project name matches the root directory name Eg: docker-compose.yml, Makefile, .env files (client/app) etc..
+### MongoDB Configuration
+- Retrieve MongoDB connection strings:
+  - Outside Docker: Run `make db` in the `/app` directory.
+  - Inside Docker: Use the URL provided in the documentation.
 
-```bash```
+### Accessing the Application
+- Backend: [http://localhost:3002](http://localhost:3002)
+- Frontend: [http://localhost:3000](http://localhost:3000)
 
-**Update .env files** for both client and app.
+### Optional Custom Domain Setup
+- Update `/etc/hosts` for custom development domains, e.g., `localhost:3000 my-site.dev`.
 
-Change directory.
+## VS Code Debugging
+- Launch.json configuration is provided for debugging NestJS in Docker.
 
-```bash
-cd /app
-```
-
-Install Nest.js CLI globally
-
-```bash
-yarn add -g @nestjs/cli
-```
-## Build back-end Docker containers (server, db etc..)
-
-Run the following command to install the dependancies, make sure to be inside the "app" directory.
-
-```bash
-yarn
-```
-Run the following command to build the containers and start the development environment, make sure to be inside the "app" directory.
-
-```bash
-make up
-```
-Run the container and Nest.js development environment in quiet/silent mode (not recommended for local development, this hides the console output).
-
-```bash
-make up-silent
-```
-
-## Build the React front-end (client)
-
-In a new terminal window, change directory to "client" folder.
-
-```bash
-cd /client
-```
-
-Run the following command to install the dependancies, make sure to be inside the "client" directory.
-
-```bash
-yarn
-```
-Run the following command to build the containers and start the development environment, make sure to be inside the "client" directory.
-
-```bash
-make up
-```
-
-## MongoDB
-
-Get connection string URL's, run the following command in **/app** directory.:
-
-```bash
-make db
-```
-
-Access MongoDB outside Docker containers:
-
-```bash
-mongodb://{PROJECT_NAME}:{PROJECT_NAME}@127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+1.5.0
-```
-
-Access MongoDB within the Docker containers, use this URL for the app to connect to MongoDB instance:
-
-```bash
-mongodb://{PROJECT_NAME}:{PROJECT_NAME}@mongo:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+1.5.0
-```
-
-
-## View the app
-
-Visit back-end [http://localhost:3002](http://localhost:3002).
-
-Visit front-end [http://localhost:3000](http://localhost:3000).
-
-## Optional
-
-Update /etc/hosts (mac) if you want to use a custom development domain with the following:
-
-```bash
-localhost:3000 my-site.dev
-```
-
-## VS Code Launch.json config file
-
-```
-{
-  // Use IntelliSense to learn about possible attributes.
-  // Hover to view descriptions of existing attributes.
-  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
-  "version": "0.2.0",
-  "configurations": [
-    {
-      "type": "node",
-      "request": "attach",
-      "address": "localhost",
-      "name": "Debug NestJS in Docker",
-      "port": 9229,
-      "remoteRoot": "/usr/src/app",
-      "sourceMaps": true,
-      "restart": true,
-      "localRoot": "${workspaceFolder}/app",
-    }
-  ]
-}
-```
-
-## Available Commands (app)
-  
+## Command Reference
 | Command | Description |
 |--|--|
-| help | Prints the help screen. |
-| up | Builds the application container and starts it with logging. |
-| build | Rebuilds the application container and starts it with logging. |
-| up-silent | Builds the application container and starts it in background mode, no active logging. |
-| down | Stops and removes the docker containers. |
-| stop | Stops the running containers. |
-| shell | SSH into the main app container. |
-| shell-db | SSH into the MongoDB container with mongosh |
-| db | Get the MongoDB connection string |
+| `help` | Lists available commands. |
+| `up` | Builds and starts the app with logging. |
+| `build` | Rebuilds the app container. |
+| `up-silent` | Starts the app in the background. |
+| `down` | Stops and removes containers. |
+| `stop` | Stops running containers. |
+| `shell` | Accesses the main app container. |
+| `shell-db` | Accesses the MongoDB container. |
+| `db` | Retrieves MongoDB connection string. |
 
-## Help
-
-To get a list of all available commands
-
-```bash
-make help
-```
-
-## Additional documentation
-
-[Click Here](https://github.com/jaybabak/apollo/tree/main/app)
+## Additional Resources
+- coming soon.
