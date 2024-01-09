@@ -1,0 +1,25 @@
+{
+  "name": "apollo",
+  "version": "1.0.0",
+  "description": "This is a boilerplate repository for creating a new Docker project using Node, NestJS, React, Mongo, Material-UI along with quick start commands (check Makefile/ReadMe).",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "setup": "cd client && yarn && cd ../app && yarn",
+    "make-back": "cd app && make db && make up && cd ../client && make up",
+    "make-front": "cd client && make up",
+    "build-dev": "cd app make db && cd client docker-compose up && cd app docker-compose up",
+    "mongo": ""
+  },
+  "author": "Amos-Dabush",
+  "license": "ISC",
+  "dependencies": {
+    "nestjs": "^0.0.1"
+  },
+  "devDependencies": {
+    "@typescript-eslint/parser": "^5.0.1",
+    "eslint": "^8.7.0",
+    "prettier": "^2.5.1",
+    "typescript": "^4.4.4"
+  }
+}
