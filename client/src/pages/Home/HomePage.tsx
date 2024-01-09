@@ -56,9 +56,9 @@ function Homepage() {
         <Container disableGutters className="hero-component-content">
           <h1>apollo</h1>
           <p className="black">
-            a Brighter Tomorrow In a world where the future
-            unfolds in unexpected ways, our journey towards a better tomorrow is
-            more crucial than ever.
+            a Brighter Tomorrow In a world where the future unfolds in
+            unexpected ways, our journey towards a better tomorrow is more
+            crucial than ever.
           </p>
           <p className="black">
             We believe in the power of innovation, the resilience of the human
@@ -74,6 +74,8 @@ function Homepage() {
             We're committed to fostering solutions that not only address today's
             challenges but also pave the way for a future we can all be proud
             of.
+            <br />
+            Project: <a href="https://github.com/AmosDabush/apolllo">github</a>
           </p>
           <Button
             component={Link}
