@@ -85,7 +85,7 @@ make db
 Access MongoDB outside Docker containers:
 
 ```bash
-mongodb://{PROJECT_NAME}:{PROJECT_NAME}@127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+1.5.0
+mongodb://{PROJECT_NAME}:{PROJECT_NAME}@mongo:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+1.5.0
 ```
 
 Access MongoDB within the Docker containers, use this URL for the app to connect to MongoDB instance:
@@ -97,16 +97,16 @@ mongodb://{PROJECT_NAME}:{PROJECT_NAME}@mongo:27017/?directConnection=true&serve
 
 ## View the app
 
-Visit back-end [http://localhost:3002](http://localhost:3002).
+Visit back-end [http://127.0.0.1:3002](http://127.0.0.1:3002).
 
-Visit front-end [http://localhost:3000](http://localhost:3000).
+Visit front-end [http://127.0.0.1:3000](http://127.0.0.1:3000).
 
 ## Optional
 
 Update /etc/hosts (mac) if you want to use a custom development domain with the following:
 
 ```bash
-localhost:3000 my-site.dev
+127.0.0.1:3000 my-site.dev
 ```
 
 ## VS Code Launch.json config file
@@ -121,7 +121,7 @@ localhost:3000 my-site.dev
     {
       "type": "node",
       "request": "attach",
-      "address": "localhost",
+      "address": "127.0.0.1",
       "name": "Debug NestJS in Docker",
       "port": 9229,
       "remoteRoot": "/usr/src/app",

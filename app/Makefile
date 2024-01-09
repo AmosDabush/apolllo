@@ -69,9 +69,9 @@ shell-db:
 db:
 	@echo "-------------------------------------------------------------------------"
 	@echo "### Host machine URL (use to access mongo outside Docker Containers e.g: MongoDB Compass GUI) ###"
-	@echo 'mongodb://${DB_USERNAME}:${DB_PASSWORD}@127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+1.5.0'
+	@echo 'mongodb://${DB_USERNAME}:${DB_PASSWORD}@mongo:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+1.5.0'
 	@echo "-------------------------------------------------------------------------"
-	@echo "### Localhost URL ###"
+	@echo "### 127.0.0.1 URL ###"
 	@echo 'mongodb://${DB_USERNAME}:${DB_PASSWORD}@mongo:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+1.5.0'
 	@echo "-------------------------------------------------------------------------"
 

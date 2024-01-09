@@ -2,7 +2,7 @@ version: '3.7'
 
 services:
   apollo:
-    container_name: apollo
+    container_name: apollo-api
     build:
       context: .
       target: development
@@ -29,13 +29,13 @@ services:
     container_name: mongo
     image: mongo
     restart: always
-    environment:
-      MONGO_INITDB_DATABASE: ${DB_DATABASE_NAME}
-      MONGO_INITDB_ROOT_USERNAME: ${DB_USERNAME}
-      MONGO_INITDB_ROOT_PASSWORD: ${DB_PASSWORD}
+    # environment:
+    #   MONGO_INITDB_DATABASE: mongo
+    #   MONGO_INITDB_ROOT_USERNAME: apollo
+    #   MONGO_INITDB_ROOT_PASSWORD: apollo
     volumes:
       - ./data:/data/db
-      - ./.config/mongo-entrypoint:/docker-entrypoint-initdb.d/"
+      # - ./.config/mongo-entrypoint:/docker-entrypoint-initdb.d/"
     ports:
       - 27017:27017
     networks:
