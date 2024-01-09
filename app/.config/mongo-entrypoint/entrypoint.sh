@@ -1,11 +1,11 @@
 mongo <<EOF
 db.createUser({
-  user: '$MONGO_INITDB_ROOT_USERNAME',
-  pwd: '$MONGO_INITDB_ROOT_PASSWORD',
+  user: 'apollo',
+  pwd: 'apollo',
   roles: [
     {
       role: 'readWrite',
-      db: '$MONGO_INITDB_DATABASE',
+      db: 'mongo',
     },
   ],
 });

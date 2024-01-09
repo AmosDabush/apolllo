@@ -1,9 +1,21 @@
-import { Box, Grid, Checkbox, FormControlLabel, TextField, Button } from '@mui/material';
+import {
+  Box,
+  Grid,
+  Checkbox,
+  FormControlLabel,
+  TextField,
+  Button,
+} from "@mui/material";
 import { Link } from "react-router-dom";
 
-export default function LoginForm({formik}:{formik:any}) {
+export default function LoginForm({ formik }: { formik: any }) {
   return (
-    <Box component="form" onSubmit={formik.handleSubmit} noValidate sx={{ mt: 1 }}>
+    <Box
+      component="form"
+      onSubmit={formik.handleSubmit}
+      noValidate
+      sx={{ mt: 1, background: "rgba(29, 125, 190, 0.586)", borderRadius: "20px", padding: "40px" }}
+    >
       <TextField
         margin="normal"
         required
@@ -13,6 +25,7 @@ export default function LoginForm({formik}:{formik:any}) {
         name="email"
         autoComplete="email"
         autoFocus
+        InputProps={{ style: { backgroundColor: "#266798"} }}
         error={formik.touched.email && Boolean(formik.errors.email)}
         helperText={formik.touched.email && formik.errors.email}
         onChange={formik.handleChange}
@@ -26,6 +39,7 @@ export default function LoginForm({formik}:{formik:any}) {
         label="Password"
         type="password"
         id="password"
+        InputProps={{ style: { backgroundColor: "#266798" } }}
         autoComplete="current-password"
         onChange={formik.handleChange}
         error={formik.touched.password && Boolean(formik.errors.password)}
@@ -47,16 +61,12 @@ export default function LoginForm({formik}:{formik:any}) {
       </Button>
       <Grid container>
         <Grid item xs>
-          <Link to="/">
-            Forgot password?
-          </Link>
+          <Link to="/">Forgot password?</Link>
         </Grid>
         <Grid item>
-          <Link to="/register">
-            Don't have an account? Sign Up"
-          </Link>
+          <Link to="/register">Don't have an account? Sign Up"</Link>
         </Grid>
       </Grid>
     </Box>
-  )
+  );
 }
