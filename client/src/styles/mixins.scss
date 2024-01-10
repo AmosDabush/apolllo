@@ -1,0 +1,35 @@
+@use '/src/styles/base/colors.module.scss' as *;
+@use '/src/styles/base/responsive.scss' as *;
+
+@mixin risk-colors($alpha: 1) {
+  &.low {
+    background-color: rgba($green, $alpha);
+    color: $green;
+  }
+
+  &.medium {
+    background-color: rgba($yellow, $alpha);
+    color: $yellow;
+  }
+
+  &.high {
+    background-color: rgba($orange, $alpha);
+    color: $orange;
+  }
+
+  &.critical {
+    background-color: rgba($red, $alpha);
+    color: $red;
+  }
+}
+
+@mixin hugeScreen($prop, $val) {
+  @media #{$hugeScreen} {
+    #{$prop}: $val * 1.1;
+  }
+}
+@mixin hugeScreenCalc($prop, $val, $base) {
+  @media #{$hugeScreen} {
+    #{$prop}: calc($base - ($val * 1.1));
+  }
+}

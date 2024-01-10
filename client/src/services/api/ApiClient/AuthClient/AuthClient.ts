@@ -14,7 +14,9 @@ export class AuthClient extends ApiClient {
     super(baseUrl);
   }
 
-  public static getInstance(baseUrl = process.env.REACT_APP_BASE_URL): AuthClient {
+  public static getInstance(
+    baseUrl = process.env.REACT_APP_BASE_URL
+  ): AuthClient {
     if (!this.instance) {
       this.instance = new AuthClient(baseUrl);
     }
@@ -24,15 +26,18 @@ export class AuthClient extends ApiClient {
 
   public async getUser(): Promise<UserInterface | any> {
     try {
-      const response = await this.get('/profile');
+      const response = await this.get("/profile");
+      console.log(response);
       return response.data;
     } catch (error) {
       throw error;
     }
   }
 
-  public async authenticateUser(user: LoginFormInterface): Promise<UserInterface | any> {
-    const options:AxiosRequestConfig = {
+  public async authenticateUser(
+    user: LoginFormInterface
+  ): Promise<UserInterface | any> {
+    const options: AxiosRequestConfig = {
       data: {
         email: user.email,
         password: user.password,
@@ -40,15 +45,17 @@ export class AuthClient extends ApiClient {
     };
 
     try {
-      const response = await this.post('/auth/login', options);
+      const response = await this.post("/auth/login", options);
       return response.data;
     } catch (error) {
       throw error;
     }
   }
 
-  public async registerUser(form: RegisterFormInterface): Promise<UserInterface | any> {
-    const options:AxiosRequestConfig = {
+  public async registerUser(
+    form: RegisterFormInterface
+  ): Promise<UserInterface | any> {
+    const options: AxiosRequestConfig = {
       data: {
         firstName: form.firstName,
         lastName: form.lastName,
@@ -58,11 +65,10 @@ export class AuthClient extends ApiClient {
     };
 
     try {
-      const response = await this.post('/register', options);
+      const response = await this.post("/register", options);
       return response.data;
     } catch (error) {
       throw error;
     }
   }
-
 }

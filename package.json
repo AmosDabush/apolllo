@@ -4,6 +4,9 @@
   "description": "This is a boilerplate repository for creating a new Docker project using Node, NestJS, React, Mongo, Material-UI along with quick start commands (check Makefile/ReadMe).",
   "main": "index.js",
   "scripts": {
+    "start-app":"cd app && docker compose up --build",
+    "start-client":"cd client && docker compose up --build",
+    "start":"yarn start-app -d && yarn start client",
     "test": "echo \"Error: no test specified\" && exit 1",
     "setup": "cd client && yarn && cd ../app && yarn",
     "make-back": "cd app && make db && make up && cd ../client && make up",

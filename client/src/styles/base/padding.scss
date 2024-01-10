@@ -1,0 +1,43 @@
+@for $i from 1 through 100 {
+  .p-#{$i} {
+    padding: #{2px * $i};
+  }
+}
+
+@for $i from 1 through 100 {
+  .px-#{$i} {
+    padding-right: #{2px * $i};
+    padding-left: #{2px * $i};
+  }
+}
+
+@for $i from 1 through 100 {
+  .py-#{$i} {
+    padding-top: #{2px * $i};
+    padding-bottom: #{2px * $i};
+  }
+}
+
+@for $i from 1 through 100 {
+  .pr-#{$i} {
+    padding-right: #{2px * $i};
+  }
+}
+
+@for $i from 1 through 100 {
+  .pl-#{$i} {
+    padding-left: #{2px * $i};
+  }
+}
+
+@for $i from 1 through 100 {
+  .pt-#{$i} {
+    padding-top: #{2px * $i};
+  }
+}
+
+@for $i from 1 through 100 {
+  .pb-#{$i} {
+    padding-bottom: #{2px * $i};
+  }
+}

@@ -1,0 +1,20 @@
+@use './variables.scss' as *;
+
+input {
+  min-height: 24px;
+  border: none;
+  padding: 4px 8px;
+  border-radius: 2px;
+}
+
+input[type='password'] {
+  font-family: Verdana !important;
+  font-size: 20px !important;
+  letter-spacing: 0.03em;
+
+  &::placeholder {
+    font-family: 'Inter';
+    font-size: unset;
+    letter-spacing: 0;
+  }
+}

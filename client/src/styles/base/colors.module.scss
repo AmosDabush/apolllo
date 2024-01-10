@@ -1,0 +1,365 @@
+$light-blue: #abdcfe;
+$blue: #36abfd;
+$blue1: #78c8ff;
+$blue2: #0096ff;
+
+$error-404: #cd44ff;
+
+$white: #f7f7f7;
+$dark-grey: #ababab1a;
+$grey: #c9c9c9;
+$grey1: #d8d8d8e0;
+$grey2: #cacaca54;
+
+$yellow: #ffd248;
+$green: #34e497;
+$orange: #ff7731;
+$red: #ff2e2e;
+$red2: #ff4e49;
+$critical: #e2355e;
+
+$black: #18191a;
+$black1: #242526;
+$black2: #2d2e2f;
+$black3: #5a5c5e;
+$black4: #4b4c4d;
+$black5: #1d1e20;
+$black6: #343536;
+
+$purple: #968eff;
+
+$red-cream: #ff999f;
+$yellow-cream: #f0f465;
+$blue-cream: #66b3ff;
+$magenta-cream: #e0b2ff;
+$azure-cream: #71d5bc;
+$orange-cream: #ffa848;
+$pink-cream: #f985b5;
+$lime-cream: #d7f75b;
+$purple-cream: #9fbbfe;
+$green-cream: #6fffad;
+
+$bg-lighter-color: #3a3b3c;
+$bg-menu: #1a1818;
+
+$danger: rgba(255, 0, 0, 0.8);
+$border-color: rgba(255, 0, 0, 0.37);
+$grey-border: rgba($grey, 0.15);
+
+@mixin set-color($color) {
+  color: $color;
+  &-bg {
+    background-color: $color;
+    @for $i from 1 through 9 {
+      &--opacity-#{$i} {
+        background-color: rgba($color, calc($i / 10));
+      }
+    }
+  }
+  &-svg {
+    fill: $color;
+  }
+}
+
+/* css class example:
+{color}-{gbg OR gbgh}--{tl,tr,bl,br}--{dark,light,lighter,...}
+{color}-{static OR hover}--{direction}--{theme name}
+*/
+
+@mixin gradient($color) {
+  $opacityArray: (
+    '--dark': (
+      transparent 88%,
+      rgba($color, 0.5) 100%,
+    ),
+    '': (
+      transparent 85%,
+      rgba($color, 0.3) 100%,
+    ),
+    '--light': (
+      transparent 70%,
+      rgba($color, 0.3) 100%,
+    ),
+    '--lighter': (
+      transparent 50%,
+      rgba($color, 0.3) 100%,
+    ),
+  );
+  $degrees: (
+    'tl': -45deg,
+    'tr': 45deg,
+    'bl': -90deg,
+    'br': 90deg,
+  );
+  &-gbgh {
+    @each $name, $degree in $degrees {
+      @each $oName, $theme in $opacityArray {
+        &--#{$name}#{$oName}:hover {
+          background-image: linear-gradient($degree, $theme);
+        }
+      }
+    }
+  }
+  &-gbg {
+    @each $name, $degree in $degrees {
+      @each $oName, $theme in $opacityArray {
+        &--#{$name}#{$oName} {
+          background-image: linear-gradient($degree, $theme);
+        }
+      }
+    }
+  }
+}
+
+$colors: (
+  'white': $white,
+  'red': $red,
+  'red2': $red2,
+  'blue1': $blue1,
+  'blue2': $blue2,
+  'black': $black,
+  'black1': $black1,
+  'black2': $black2,
+  'black3': $black3,
+  'black4': $black4,
+  'black5': $black5,
+  'black6': $black6,
+  'lighter-color': $bg-lighter-color,
+  'yellow': $yellow,
+  'grey': $grey,
+  'gray': $grey,
+  'orange': $orange,
+  'green': $green,
+  'blue': $blue,
+  'purple': $purple,
+);
+
+$gradientColors: (
+  'black': $black,
+  'red': $red,
+  'yellow': $yellow,
+  'orange': $orange,
+  'green': $green-cream,
+  'blue': $blue,
+  'purple': $purple,
+);
+
+@each $name, $color in $colors {
+  .#{$name} {
+    @include set-color($color);
+  }
+}
+
+@each $name, $color in $gradientColors {
+  .#{$name} {
+    @include gradient($color);
+  }
+}
+
+.bg-black {
+  background-color: $black;
+}
+
+.bg-black2 {
+  background-color: $black2;
+}
+
+.bg-black3 {
+  background-color: $black1;
+}
+
+.bg-black4 {
+  background-color: $black4;
+}
+
+.bg-lighter-color {
+  background-color: $bg-lighter-color;
+}
+
+.bg-menu {
+  background-color: $bg-lighter-color;
+}
+
+.bg-purple {
+  background-color: $purple;
+}
+
+.bg-purple-cream {
+  background-color: $purple-cream;
+  @for $i from 1 through 9 {
+    &--opacity-#{$i} {
+      background-color: rgba($purple-cream, calc($i / 10));
+    }
+  }
+}
+
+.cream {
+  &-red {
+    color: $red-cream;
+    &-bg {
+      background-color: $red-cream;
+      @for $i from 1 through 9 {
+        &--opacity-#{$i} {
+          background-color: rgba($red-cream, calc($i / 10));
+        }
+      }
+    }
+  }
+
+  &-yellow {
+    color: $yellow-cream;
+    &-bg {
+      background-color: $yellow-cream;
+      @for $i from 1 through 9 {
+        &--opacity-#{$i} {
+          background-color: rgba($yellow-cream, calc($i / 10));
+        }
+      }
+    }
+  }
+  &-blue {
+    color: $blue-cream;
+    &-bg {
+      background-color: $blue-cream;
+      @for $i from 1 through 9 {
+        &--opacity-#{$i} {
+          background-color: rgba($blue-cream, calc($i / 10));
+        }
+      }
+    }
+  }
+  &-magenta {
+    color: $magenta-cream;
+  }
+  &-azure {
+    color: $azure-cream;
+  }
+  &-pink {
+    color: $pink-cream;
+  }
+  &-orange {
+    color: $orange-cream;
+  }
+  &-purple {
+    color: $purple-cream;
+  }
+  &-lime {
+    color: $lime-cream;
+  }
+  &-green {
+    color: $green-cream;
+  }
+}
+
+.bg-blue {
+  background-color: $blue;
+  @for $i from 1 through 9 {
+    &--opacity-#{$i} {
+      background-color: rgba($blue, calc($i / 10));
+    }
+  }
+}
+
+.bg-blue1 {
+  background-color: $blue1;
+  @for $i from 1 through 9 {
+    &--opacity-#{$i} {
+      background-color: rgba($blue1, calc($i / 10));
+    }
+  }
+}
+
+.bg-yellow {
+  background-color: $yellow;
+  @for $i from 1 through 9 {
+    &--opacity-#{$i} {
+      background-color: rgba($yellow, calc($i / 10));
+    }
+  }
+}
+
+.bg-green {
+  background-color: $green;
+}
+
+.bg-orange {
+  background-color: $orange;
+}
+
+.danger {
+  color: $danger;
+}
+
+.yellow {
+  color: $yellow;
+}
+
+.orange {
+  color: $orange;
+}
+
+.grey1 {
+  color: $grey1;
+}
+
+.grey2 {
+  color: $grey2;
+}
+
+.blue {
+  color: $blue;
+}
+
+.blue1 {
+  color: $blue1;
+}
+
+.light-blue {
+  color: $light-blue;
+}
+
+.purple {
+  color: $purple;
+}
+
+.svg-white {
+  fill: $white;
+}
+
+.svg-blue1 {
+  fill: $blue1;
+}
+
+.svg-red {
+  fill: $red;
+}
+
+.svg-orange {
+  fill: $orange;
+}
+
+.svg-green {
+  fill: $green;
+}
+
+:export {
+  WHITE: $white;
+  BLACK: $black;
+  BLACK1: $black1;
+  BLACK2: $black2;
+  BLACK3: $black3;
+  BLACK4: $black4;
+  BLACK5: $black5;
+  GRAY: $grey;
+  RED: $red;
+  YELLOW: $yellow;
+  ORANGE: $orange;
+  GREEN: $green;
+  BLUE1: $blue1;
+  BLUE_LIGHT: $light-blue;
+  PURPLE: $purple;
+  DANGER: $danger;
+  PURPLE-CREAM: $purple-cream;
+  BG_LIGHTER: $bg-lighter-color;
+  BG_MENU: $bg-menu;
+}

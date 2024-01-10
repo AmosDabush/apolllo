@@ -1,3 +1,19 @@
-.homepage {
+.Profile {
   display: block;
+  .profile-component-content {
+    position: absolute;
+    top: 15%;
+    left: 35%;
+    font-weight: bold;
+    font-size: 14;
+    transform: translate(-25%, -30%);
+    color: rgb(41, 40, 40);
+    background-color: rgba(114, 19, 192, 0.788);
+    border-radius: 10px;
+    padding: 10px;
+
+    h1 {
+      font-size: 42px;
+    }
+  }
 }

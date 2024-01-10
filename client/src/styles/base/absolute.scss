@@ -1,0 +1,44 @@
+.absolute {
+  position: absolute;
+
+  @for $i from 0 through 100 {
+    &.top-#{$i} {
+      top: #{$i * 2px};
+    }
+  }
+
+  @for $i from 0 through 100 {
+    &.bottom-#{$i} {
+      bottom: #{$i * 2px};
+    }
+  }
+
+  @for $i from 0 through 100 {
+    &.left-#{$i} {
+      left: #{$i * 2px};
+    }
+  }
+
+  @for $i from 0 through 100 {
+    &.right-#{$i} {
+      right: #{$i * 2px};
+    }
+  }
+
+  &.cx {
+    left: 0;
+    right: 0;
+  }
+
+  &.cy {
+    top: 0;
+    bottom: 0;
+  }
+
+  &.cxy {
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+}

@@ -1,0 +1,69 @@
+.grid {
+  display: grid;
+  &.col {
+    &--auto {
+      grid-auto-columns: auto;
+    }
+    @for $i from 1 through 40 {
+      &__even-#{$i} {
+        grid-template-columns: repeat($i, 1fr);
+      }
+    }
+  }
+
+  &.row {
+    &--auto {
+      grid-auto-rows: auto;
+    }
+    &--max-content {
+      grid-auto-rows: max-content;
+    }
+  }
+  &__info {
+    grid-template-columns: 0.2fr 0.8fr;
+  }
+
+  &__comment {
+    grid-template-columns: 30px 1fr;
+  }
+
+  &.content-start {
+    align-content: flex-start;
+  }
+
+  &.content-center {
+    align-content: center;
+  }
+
+  &.content-baseline {
+    align-content: baseline !important;
+  }
+
+  &.content-stretch {
+    align-content: stretch;
+  }
+
+  &.content-end {
+    align-content: end;
+  }
+
+  &.items-start {
+    align-items: start;
+  }
+
+  &.items-center {
+    align-items: center;
+  }
+
+  &.items-baseline {
+    align-items: baseline;
+  }
+
+  &.items-stretch {
+    align-items: stretch;
+  }
+
+  &.items-end {
+    align-items: end;
+  }
+}

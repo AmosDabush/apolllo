@@ -16,6 +16,7 @@ import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import { TokenStorage } from "./services";
 import "./App.css";
+import './styles/global.scss';
 
 function App() {
   const token: boolean = TokenStorage.getInstance().getAccessToken()

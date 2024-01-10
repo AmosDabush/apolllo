@@ -1,0 +1,62 @@
+@font-face {
+  font-family: 'Figtree';
+  src: url('./fonts/Figtree-VariableFont_wght.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Figtree-italic';
+  src: url('./fonts/Figtree-Italic-VariableFont_wght.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'CutiveMono';
+  src: url('./fonts/CutiveMono-Regular.ttf') format('truetype');
+}
+
+.font {
+  @for $i from 8 through 100 {
+    &.s-#{$i} {
+      font-size: #{1px * $i};
+    }
+  }
+
+  &.bold {
+    font-weight: 700;
+  }
+
+  &.thin {
+    font-weight: 300;
+  }
+
+  &.uppercase {
+    text-transform: uppercase;
+  }
+
+  &.italic {
+    font-family: 'Figtree-italic';
+  }
+
+  &.capitalize {
+    text-transform: capitalize;
+    &--first:first-letter {
+      text-transform: capitalize !important;
+    }
+  }
+
+  &.ellipsis {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 90%;
+  }
+
+  &.ellipsis2 {
+    text-overflow: ellipsis;
+  }
+
+  &.center {
+    text-align: center;
+  }
+
+  &.cutive {
+    font-family: 'CutiveMono';
+  }
+}
